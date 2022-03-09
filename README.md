@@ -61,8 +61,8 @@ git push && git push --tags
 
 ### Chaine d'intégration continue
 
-Les actions github sont utilisée pour cela : https://github.com/abes-esr/bacon-cache-warmer-docker/blob/master/.github/workflows/ci.yml  
-Elles réalisent plusiers étapes :
+Une action github est utilisée pour cela : https://github.com/abes-esr/bacon-cache-warmer-docker/blob/master/.github/workflows/ci.yml  
+Elle réalise plusieurs étapes :
 - construction de l'image docker
 - test de l'image (tests légers appelés aussi "smock test"): lancement d'un conteneur pour tester que ca démarre bien et tests du chauffage du premier KBART de la liste des 20000 KBART de BACON
 - publication de l'image docker sur dockerhub
