@@ -4,11 +4,11 @@
 #
 
 # on le fait rien si la derniere execution de ce meme script n'est pas terminee
-if [ -f /tmp/bacon-cache-warmer.lock ]; then
+ps aux | grep "bacon-cache-warmer.sh" | grep -v grep
+if [ "$?" != "0" ]; then
   echo "Chauffage de BACON: ignore (car un autre script est en cours)"
   exit 0
 fi
-touch /tmp/bacon-cache-warmer.lock
 
 echo "Chauffage de BACON: demarrage"
 
@@ -86,4 +86,3 @@ do
 done
 
 echo "Chauffage de BACON: termine"
-rm -f /tmp/bacon-cache-warmer.lock

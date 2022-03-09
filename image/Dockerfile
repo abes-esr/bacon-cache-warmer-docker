@@ -8,7 +8,8 @@ RUN crontab /etc/local/etc/cron.d/crontab-tasks
 
 # curl: pour chauffer le cache en appelant les URL
 # libxml2: pour naviguer dans le RSS et extraire les <link> de tous les KBART avec la commande xmllint
-RUN yum install -y curl libxml2
+# procps: pour detecter si le script de chauffeur de cache precedent est termine ou pas (commande ps)
+RUN yum install -y curl libxml2 procps
 
 # le/les script de cache warmer
 COPY ./bacon-cache-warmer.sh /usr/local/bin/bacon-cache-warmer.sh
