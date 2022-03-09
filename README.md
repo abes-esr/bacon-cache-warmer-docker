@@ -2,6 +2,9 @@
 
 (Travail en cours - 09/03/2022)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/bacon-cache-warmer.svg)](https://hub.docker.com/r/abesesr/bacon-cache-warmer/)
+[![bacon-cache-warmer ci](https://github.com/abes-esr/bacon-cache-warmer-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/abes-esr/bacon-cache-warmer-docker/actions/workflows/ci.yml)
+
 Cette application est un batch périodique permettant de chauffer le cache de l'application [BACON](https://bacon.abes.fr). Ce batch va successivement appeler toutes les URL de tous les packages KBART de BACON. Ceci aura pour effet de mettre en cache le contenu de ces KBART dans le système de cache de BACON (qui est lui même en cours de conception) et ainsi les futurs téléchargement des KBART sera ultra rapide car chaque génération de KBART ne provoquera plus de traitement parfois intensif au niveau de la base de donnée.
 
 Son mode de fonctionnement est le suivant : appeler les URLs de téléchargement des packages KBART de BACON (plus de 20 000 URL à la date du 8 mars 2022) en se basant sur le [fil RSS de bacon](https://bacon.abes.fr/rss) qui contient la liste de tous les packages KBART de BACON.
