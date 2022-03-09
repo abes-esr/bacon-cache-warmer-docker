@@ -9,7 +9,7 @@ services:
 
   bacon-cache-warmer:
     build: ./image/
-    image: bacon-cache-warmer:1.0.1
+    image: bacon-cache-warmer:1.0.2
     container_name: bacon-cache-warmer
     restart: unless-stopped
     environment:
