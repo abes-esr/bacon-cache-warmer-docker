@@ -45,4 +45,13 @@ docker-compose --build up
 
 ### Générer une nouvelle version de l'image
 
-TODO
+```
+curl https://raw.githubusercontent.com/fmahnke/shell-semver/master/increment_version.sh > increment_version.sh
+chmod +x ./increment_version.sh
+CURRENT_VERSION=$(git tag | tail -1)
+NEXT_VERSION=$(./increment_version.sh -patch $CURRENT_VERSION) # -patch, -minor or -major
+sed -i "s#bacon-cache-warmer:$CURRENT_VERSION#bacon-cache-warmer:$NEXT_VERSION#g" README.md docker-compose.yml
+git commit README.md docker-compose.yml -m "Version $NEXT_VERSION" 
+git tag $NEXT_VERSION
+git push && git push --tags
+```
