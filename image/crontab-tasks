@@ -1,0 +1,7 @@
+SHELL=/bin/bash
+BASH_ENV=/etc/environment
+
+# Execute le cache warmer tous les jours a 3h
+0 3 * * * /usr/local/bin/bacon-cache-warmer.sh >/proc/1/fd/1 2>/proc/1/fd/2
+
+# An empty line is required at the end of this file for a valid cron file.

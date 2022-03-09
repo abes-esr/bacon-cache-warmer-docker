@@ -1,0 +1,17 @@
+#
+# docker-compose.yml exemple que l'on peut aussi utiliser
+# pour debugguer et developper en local
+#
+
+version: "3"
+
+services:
+
+  bacon-cache-warmer:
+    build: ./image/
+    image: bacon-cache-warmer:1.0.0
+    container_name: bacon-cache-warmer
+    restart: unless-stopped
+    environment:
+      - BACON_RSS_URL=https://bacon.abes.fr/rss
+      - BACON_MAX_URL_TO_WARM=3
