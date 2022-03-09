@@ -9,6 +9,8 @@ Cette application est un batch périodique permettant de chauffer le cache de l'
 
 Son mode de fonctionnement est le suivant : appeler les URLs de téléchargement des packages KBART de BACON (plus de 20 000 URL à la date du 8 mars 2022) en se basant sur le [fil RSS de bacon](https://bacon.abes.fr/rss) qui contient la liste de tous les packages KBART de BACON.
 
+![image](https://user-images.githubusercontent.com/328244/157398427-0f04d5fe-714b-4681-b4b6-4a21c48d6321.png)
+
 Remarque: cette application n'a pas vocation à être utilisée hors du SI de l'Abes. Merci de [contacter l'Abes](https://stp.abes.fr) si jamais un besoin non imaginé emergerait en consultant le code de cette application.
 
 ## Utilisation en production à l'Abes
