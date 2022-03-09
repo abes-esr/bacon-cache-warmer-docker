@@ -22,7 +22,7 @@ Les variables d'environnement suivantes permettent de paramétrer l'application 
 - ``BACON_RSS_URL``: l'URL du RSS de BACON, à noter que ce lien n'est pas sensé varier (valeur par défaut ``https://bacon.abes.fr/rss``)
 - ``BACON_MAX_URL_TO_WARM``: le nombre max d'URL a chauffer, ce paramètre a du sens pour tester et développer ce script, en production il faut TOUT chauffer (valeur par défaut ``5``)
 
-## Développement
+## Développements
 
 Pour faire évoluer cette application, il faut l'installer en local et la lancer en local de cette manière :
 ```
