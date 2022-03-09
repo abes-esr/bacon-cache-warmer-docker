@@ -15,13 +15,20 @@ jobs:
           docker build ./image/ -t localimage:latest
 
 
-      - name: "Tests: TODO"
+      - name: "Tests: initialisation du test en créant un conteneur qui va chauffer un seul KBART (le premier du fil RSS de BACON)"
         run: |
           docker run -d --rm --name bacon-cache-warmer -e BACON_MAX_URL_TO_WARM="1" localimage:latest
           docker ps
           sleep 30 && docker logs bacon-cache-warmer
-          docker stop bacon-cache-warmer
-          
+      - name: "Tests: 1st test -> le conteneur démarre-t-il bien ?"
+        run: |
+          NB_CONTAINERS=$(docker ps | grep " Up " | wc -l)
+          test $NB_CONTAINERS = 1          
+      - name: "Tests: 2nd test -> bacon-cache-warmer a-t-il bien chauffé une URL (le premier KBART de la liste) ?"
+        run: |
+          docker logs bacon-cache-warmer | grep 'URL chauffee (1 sur 1)')"
+          test $?
+
 
       - name: "Push: prepare version from git tags/branchs"
         id: docker_tag_meta
