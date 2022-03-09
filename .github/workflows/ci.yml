@@ -26,7 +26,7 @@ jobs:
           test $NB_CONTAINERS = 1          
       - name: "Tests: 2nd test -> bacon-cache-warmer a-t-il bien chauffé une URL (le premier KBART de la liste) ?"
         run: |
-          docker logs bacon-cache-warmer | grep 'URL chauffee (1 sur 1)')"
+          docker logs bacon-cache-warmer | grep 'URL chauffee (1 sur 1)'
           test $?
 
 
