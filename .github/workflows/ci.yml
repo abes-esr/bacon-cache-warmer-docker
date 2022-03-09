@@ -19,7 +19,7 @@ jobs:
         run: |
           docker run -d --rm --name bacon-cache-warmer -e BACON_MAX_URL_TO_WARM="1" localimage:latest
           docker ps
-          sleep 10 && docker logs bacon-cache-warmer
+          sleep 30 && docker logs bacon-cache-warmer
           docker stop bacon-cache-warmer
           
 
