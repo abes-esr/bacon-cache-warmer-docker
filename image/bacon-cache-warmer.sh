@@ -20,9 +20,12 @@ echo "Telechargement du RSS de BACON (fin): taille du fichier $(du -h /tmp/bacon
 echo "Prefixe des URLs (dans le RSS): $BACON_BASEURL_IN_RSS"
 echo "Prefixe des URLs (a utiliser pour chauffer): $BACON_BASEURL_FOR_WARM"
 
-# extraction des URL de tous les packages BACON
-BACON_KBART_LIST=$(cat /tmp/bacon.rss | xmllint --xpath '//link' -)
-# les sed c'est pour avoir les URL ligne par ligne (ou separees par un espace)
+# extraction des URL de tous les packages BACON à l'aide de xpath
+BACON_KBART_LIST=$(\
+  cat /tmp/bacon.rss |\
+  xmllint --xpath '//link' -\
+)
+# les sed suivants c'est pour avoir les URL ligne par ligne (ou separees par un espace)
 BACON_KBART_NB=$(echo $BACON_KBART_LIST | sed 's#<link>#\n#g' | sed 's#</link>##g' | wc -l)
 BACON_KBART_LIST=$(echo $BACON_KBART_LIST | sed 's#<link>#\n#g' | sed 's#</link>##g')
 
