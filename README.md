@@ -72,7 +72,7 @@ git push && git push --tags
 ### Chaine d'intégration continue
 
 Une action github est utilisée pour cela : https://github.com/abes-esr/bacon-cache-warmer-docker/blob/master/.github/workflows/ci.yml  
-Elle réalise plusieurs étapes :
+Elle réalise plusieurs étapes à chaque fois qu'un gît push est réalisé :
 - construction de l'image docker
 - test de l'image (tests légers appelés aussi "smock test"): lancement d'un conteneur pour tester que ca démarre bien et tests du chauffage du premier KBART de la liste des 20000 KBART de BACON
-- publication de l'image docker sur dockerhub
+- publication de l'image docker sur dockerhub, le nom du tag docker prend de nom du tag git si c'est une release et sinon il prend le nom de la branche git
