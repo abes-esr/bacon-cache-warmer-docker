@@ -4,7 +4,7 @@
 #
 
 # on le fait rien si la derniere execution de ce meme script n'est pas terminee
-ps aux | grep "bacon-cache-warmer.sh" | grep -v grep
+ps aux | grep "bacon-cache-warmer.sh" | grep -v grep >/dev/null
 if [ "$?" != "0" ]; then
   echo "Chauffage de BACON: ignore (car un autre script est en cours)"
   exit 0
@@ -14,7 +14,7 @@ echo "Chauffage de BACON: demarrage"
 
 # On se base sur le RSS de bacon pour obtenir toutes les URL a appeler
 echo "Telechargement du RSS de BACON (debut): $BACON_RSS_URL"
-curl -L $BACON_RSS_URL > /tmp/bacon.rss
+curl -s -L $BACON_RSS_URL > /tmp/bacon.rss
 echo "Telechargement du RSS de BACON (fin): taille du fichier $(du -h /tmp/bacon.rss | awk '{print $1}')"
 
 echo "Prefixe des URLs (dans le RSS): $BACON_BASEURL_IN_RSS"

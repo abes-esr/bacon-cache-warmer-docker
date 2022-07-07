@@ -1,10 +1,10 @@
 FROM rockylinux:8
 
 # systeme pour les crontab
-RUN yum install -y cronie vim && \
+# gettext: pour la commande envsubst
+RUN yum install -y cronie gettext vim && \
     crond -V && rm -rf /etc/cron.*/*
-COPY ./crontab-tasks /etc/local/etc/cron.d/crontab-tasks
-RUN crontab /etc/local/etc/cron.d/crontab-tasks
+COPY ./crontab-tasks.tmpl /etc/local/etc/cron.d/crontab-tasks.tmpl
 
 # curl: pour chauffer le cache en appelant les URL
 # libxml2: pour naviguer dans le RSS et extraire les <link> de tous les KBART avec la commande xmllint
