@@ -15,6 +15,7 @@ services:
       BACON_RSS_URL: "https://bacon.abes.fr/rss"
       BACON_BASEURL_IN_RSS: "http://bacon.abes.fr"
       BACON_BASEURL_FOR_WARM: "https://bacon.abes.fr"
+      BACON_DELAY_BETWEEN_WARM: "2"
       BACON_MAX_URL_TO_WARM: "3"
       BACON_CACHEWARMER_JUST_ONCE: "yes"
       BACON_CACHEWARMER_CRON: "0 3 * * *"

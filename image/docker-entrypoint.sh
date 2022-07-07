@@ -7,6 +7,8 @@ export BACON_BASEURL_IN_RSS=${BACON_BASEURL_IN_RSS:='http://bacon.abes.fr'}
 export BACON_BASEURL_FOR_WARM=${BACON_BASEURL_FOR_WARM:='https://bacon.abes.fr'}
 export BACON_CACHEWARMER_JUST_ONCE=${BACON_CACHEWARMER_JUST_ONCE:='yes'}
 export BACON_CACHEWARMER_CRON=${BACON_CACHEWARMER_CRON:='0 3 * * *'}
+export BACON_DELAY_BETWEEN_WARM=${BACON_DELAY_BETWEEN_WARM:='0'}
+
 
 # Réglage de /etc/environment pour que les crontab s'exécutent avec les bonnes variables d'env
 echo "$(env)

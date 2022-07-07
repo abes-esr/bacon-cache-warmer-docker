@@ -86,6 +86,11 @@ do
   if [ "$WARMED_URL_COUNT" -gt "$WARMED_URL_COUNT_MAX" ]; then
     break
   fi
+
+  if [ $BACON_DELAY_BETWEEN_WARM != "0" ]; then
+    echo "Attente de BACON_DELAY_BETWEEN_WARM=$BACON_DELAY_BETWEEN_WARM secondes"
+    sleep $BACON_DELAY_BETWEEN_WARM
+  fi
 done
 
 echo "Chauffage de BACON: termine"
