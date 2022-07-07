@@ -17,7 +17,7 @@ jobs:
 
       - name: "Tests: initialisation du test en créant un conteneur qui va chauffer un seul KBART (le premier du fil RSS de BACON)"
         run: |
-          docker run -d --rm --name bacon-cache-warmer-demo -e BACON_MAX_URL_TO_WARM="1" BACON_CACHEWARMER_JUST_ONCE="no" localimage:latest
+          docker run -d --rm --name bacon-cache-warmer-demo -e BACON_MAX_URL_TO_WARM="1" -e BACON_CACHEWARMER_JUST_ONCE="no" localimage:latest
           docker ps
           sleep 30 && docker logs bacon-cache-warmer-demo
       - name: "Tests: 1st test -> le conteneur démarre-t-il bien ?"
