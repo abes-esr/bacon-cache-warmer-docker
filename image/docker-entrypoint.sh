@@ -3,8 +3,7 @@
 # Initialisation des paramètres de l'application avec les valeurs par défaut
 export BACON_RSS_URL=${BACON_RSS_URL:='https://bacon.abes.fr/rss'}
 export BACON_MAX_URL_TO_WARM=${BACON_MAX_URL_TO_WARM:='5'}
-export BACON_BASEURL_IN_RSS=${BACON_BASEURL_IN_RSS:='http://bacon.abes.fr'}
-export BACON_BASEURL_FOR_WARM=${BACON_BASEURL_FOR_WARM:='https://bacon.abes.fr'}
+export BACON_URL_SED_BEFORE_WARM=${BACON_URL_SED_BEFORE_WARM:='s#http://bacon.abes.fr/\(.*\)#https://bacon.abes.fr/\1#g'}
 export BACON_CACHEWARMER_JUST_ONCE=${BACON_CACHEWARMER_JUST_ONCE:='yes'}
 export BACON_CACHEWARMER_CRON=${BACON_CACHEWARMER_CRON:='0 3 * * *'}
 export BACON_DELAY_BETWEEN_WARM=${BACON_DELAY_BETWEEN_WARM:='0'}

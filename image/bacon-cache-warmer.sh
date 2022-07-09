@@ -46,41 +46,23 @@ do
   # et on zap l'url de la racine de BACON
   # et on prepare des variables pour pouvoir ecrire dans des fichiers/repertoires 
   # le rapport de chauffage
-  BACON_KBART_URL=$(echo $BACON_KBART_URL |\
-	            sed "s#${BACON_BASEURL_IN_RSS}#${BACON_BASEURL_FOR_WARM}#g")
-  WARM_REPORT_FILE=$(echo $BACON_KBART_URL | \
-    sed "s#${BACON_BASEURL_FOR_WARM}##g" | \
-    sed "s#^/##g" | \
-    sed "s#?.*##g")
-  if [ "$WARM_REPORT_FILE" == "" ]; then
-    continue
-  fi
-  WARM_REPORT_DIRNAME=$(dirname $WARM_REPORT_FILE)
-  WARM_REPORT_FILENAME=$(basename $WARM_REPORT_FILE)
+  BACON_KBART_URL=$(echo $BACON_KBART_URL | sed $BACON_URL_SED_BEFORE_WARM)
 
-  mkdir -p /tmp/bacon-report/$WARM_REPORT_DIRNAME
-  echo "URL chauffee ($WARMED_URL_COUNT sur $WARMED_URL_COUNT_MAX) : $BACON_KBART_URL" \
-       > /tmp/bacon-report/$WARM_REPORT_FILE
-  echo "Date du rapport: $(date)" >> /tmp/bacon-report/$WARM_REPORT_FILE
-  echo "Header HTTP cURL :" >> /tmp/bacon-report/$WARM_REPORT_FILE
-  KBART_DOWNLOAD_TS1=$(date +%s)
-  
   # c'est ici qu'on appelle vraiment l'URL pour la chauffer !
-  curl \
-    -L -v -s --trace-time \
-    $BACON_KBART_URL \
-    1>/tmp/kbart.temp \
-    2>>/tmp/bacon-report/$WARM_REPORT_FILE
-
+  KBART_DOWNLOAD_TS1=$(date +%s)
+  HTTP_STATUS_CODE=$(
+    curl \
+      -L -s \
+      -o /tmp/kbart.temp \
+      -w "%{http_code}" \
+      $BACON_KBART_URL
+  )
   KBART_DOWNLOAD_TS2=$(date +%s)
+
   KBART_DOWNLOAD_TIME=$(expr $KBART_DOWNLOAD_TS2 - $KBART_DOWNLOAD_TS1)
   KBART_SIZE=$(du -h /tmp/kbart.temp | awk '{print $1}')
   KBART_NB_LINES=$(wc -l /tmp/kbart.temp | awk '{print $1}')
-
-  echo "Taille du KBART : $KBART_SIZE" >>/tmp/bacon-report/$WARM_REPORT_FILE
-  echo "Nombre de lignes dans le KBART : $KBART_NB_LINES" >>/tmp/bacon-report/$WARM_REPORT_FILE
-  echo "Temps de telechargement du KBART : $KBART_DOWNLOAD_TIME" >>/tmp/bacon-report/$WARM_REPORT_FILE
-  echo "URL chauffee ($WARMED_URL_COUNT sur $WARMED_URL_COUNT_MAX) : $BACON_KBART_URL [size=$KBART_SIZE, nb_lines=$KBART_NB_LINES, nb_seconds=$KBART_DOWNLOAD_TIME]"
+  echo "URL chauffee ($WARMED_URL_COUNT sur $WARMED_URL_COUNT_MAX) : $BACON_KBART_URL [status=$HTTP_STATUS_CODE, size=$KBART_SIZE, nb_lines=$KBART_NB_LINES, nb_seconds=$KBART_DOWNLOAD_TIME]"
 
   WARMED_URL_COUNT=$(expr $WARMED_URL_COUNT + 1)
   if [ "$WARMED_URL_COUNT" -gt "$WARMED_URL_COUNT_MAX" ]; then

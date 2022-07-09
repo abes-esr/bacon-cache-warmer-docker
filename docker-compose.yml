@@ -13,8 +13,8 @@ services:
     container_name: bacon-cache-warmer-demo
     environment:
       BACON_RSS_URL: "https://bacon.abes.fr/rss"
-      BACON_BASEURL_IN_RSS: "http://bacon.abes.fr"
-      BACON_BASEURL_FOR_WARM: "https://bacon.abes.fr"
+      #BACON_URL_SED_BEFORE_WARM: 's#http://bacon.abes.fr/package2kbart/\([A-Z0-9_-]\+\)#\1#g'
+      BACON_URL_SED_BEFORE_WARM: 's#http://bacon.abes.fr/\(.*\)#https://bacon.abes.fr/\1#g'
       BACON_DELAY_BETWEEN_WARM: "2"
       BACON_MAX_URL_TO_WARM: "3"
       BACON_CACHEWARMER_JUST_ONCE: "yes"
