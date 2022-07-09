@@ -17,8 +17,7 @@ echo "Telechargement du RSS de BACON (debut): $BACON_RSS_URL"
 curl -s -L $BACON_RSS_URL > /tmp/bacon.rss
 echo "Telechargement du RSS de BACON (fin): taille du fichier $(du -h /tmp/bacon.rss | awk '{print $1}')"
 
-echo "Prefixe des URLs (dans le RSS): $BACON_BASEURL_IN_RSS"
-echo "Prefixe des URLs (a utiliser pour chauffer): $BACON_BASEURL_FOR_WARM"
+echo "SED a utiliser pour modifier les URLs du  RSS avant de chauffer : $BACON_URL_SED_BEFORE_WARM"
 
 # extraction des URL de tous les packages BACON à l'aide de xpath
 BACON_KBART_LIST=$(\
