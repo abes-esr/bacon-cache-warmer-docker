@@ -20,7 +20,7 @@ La commande suivante permet de lancer l'application dans sa dernière version di
 docker run \
   -e BACON_RSS_URL=https://bacon.abes.fr/rss \
   -e BACON_MAX_URL_TO_WARM=5 \
-  abesesr/bacon-cache-warmer:1.1.0
+  abesesr/bacon-cache-warmer:1.2.0
 ```
 
 A l'Abes : pour installer et démarrer l'application à l'Abes, il faut se référer au dépot git suivant https://git.abes.fr/microwebservices-docker/ qui n'est actuellement pas ouvert en opensource car le code source des MicroWebService n'est pas ouvert (pour cela il aurait besoin d'être refondu).
