@@ -5,7 +5,7 @@
 
 # on le fait rien si la derniere execution de ce meme script n'est pas terminee
 ps aux | grep "bacon-cache-warmer.sh" | grep -v grep >/dev/null
-if [ "$?" != "0" ]; then
+if [ "$?" = "0" ]; then
   echo "Chauffage de BACON: ignore (car un autre script est en cours)"
   exit 0
 fi
