@@ -32,10 +32,10 @@ Les variables d'environnement suivantes permettent de paramétrer l'application 
 - ``BACON_RSS_URL``: l'URL du RSS de BACON, à noter que ce lien n'est pas sensé varier (valeur par défaut ``https://bacon.abes.fr/rss``)
 - ``BACON_MAX_URL_TO_WARM``: le nombre max d'URL a chauffer, ce paramètre a du sens pour tester et développer ce script, en production il faut TOUT chauffer (valeur par défaut ``5``)
 - ``BACON_DELAY_BETWEEN_WARM`` : le temps à attendre en secondes entre deux appels d'URL de KBART. (par défaut ``0`` seconde)
-- ``BACON_CACHEWARMER_JUST_ONCE`` : permet de ne lancer le chauffeur de cache qu'une seule fois (par défaut "yes")
 - ``BACON_CACHEWARMER_CRON`` : permet de lancer périodiquement le chauffeur de cache (par défaut "0 3 * * *" soit tous les jours à 3h du matin)
 - ``BACON_URL_SED_BEFORE_WARM`` : la modification de l'URL avant de lancer le cURL qui permet de venir par exemple paramétrer le chauffeur de cache BACON sur les URL internes ou bien en local (très utile pour le développement)
 - ``BACON_CACHEWARMER_RUN_AT_STARTUP`` : pour lancer le chauffeur de cache au démarrage du conteneur ou pas (par défaut "yes", valeurs possibles : "yes" ou "no")
+- ``BACON_CACHEWARMER_JUST_ONCE`` : permet de ne lancer le chauffeur de cache qu'une seule fois (par défaut "yes")
 
 ## Développements
 
