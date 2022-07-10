@@ -25,17 +25,17 @@ $(set | grep -e '^BACON_')
 " > /etc/environment
 
 
-if [ $BACON_CACHEWARMER_RUN_AT_STARTUP = "yes" ]; then
+if [ "$BACON_CACHEWARMER_RUN_AT_STARTUP" = "yes" ]; then
     # Lance au démarrage le cache-warmer
     /usr/local/bin/bacon-cache-warmer.sh >/proc/1/fd/1 2>/proc/1/fd/2
-    if [ $BACON_CACHEWARMER_JUST_ONCE = "yes" ]; then
+    if [ "$BACON_CACHEWARMER_JUST_ONCE" = "yes" ]; then
         echo "BACON_CACHEWARMER_JUST_ONCE=yes so just stop this container!"
         exit 0
     fi
 fi
 
 
-if [ $BACON_STORE_WARMED_TO_PATH != "" ]; then
+if [ "$BACON_STORE_WARMED_TO_PATH" != "" ]; then
     mkdir -p $BACON_STORE_WARMED_TO_PATH
 fi
 

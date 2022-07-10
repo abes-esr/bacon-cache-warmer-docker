@@ -4,11 +4,13 @@
 #
 
 # on le fait rien si la derniere execution de ce meme script n'est pas terminee
-ps aux | grep "bacon-cache-warmer.sh" | grep -v grep >/dev/null
-if [ "$?" = "0" ]; then
-  echo "Chauffage de BACON: ignore (car un autre script est en cours)"
-  exit 0
-fi
+for pid in $(pidof -x bacon-cache-warmer.sh); do
+  if [ $pid != $$ ]; then
+    echo "Chauffage de BACON: ignore (car un autre script est en cours)"
+    exit 0
+  fi
+done
+
 
 echo "Chauffage de BACON: demarrage"
 
@@ -48,7 +50,7 @@ do
   BACON_KBART_URL=$(echo $BACON_KBART_URL | sed $BACON_URL_SED_BEFORE_WARM)
 
   KBART_DOWNLOAD_DST_PATH='/tmp/temp.kbart'
-  if [ $BACON_STORE_WARMED_TO_PATH != "" ]; then
+  if [ "$BACON_STORE_WARMED_TO_PATH" != "" ]; then
     mkdir -p $BACON_STORE_WARMED_TO_PATH
     KBART_DOWNLOAD_DST_PATH="$BACON_STORE_WARMED_TO_PATH/$WARMED_URL_COUNT.kbart"
   fi
@@ -74,7 +76,7 @@ do
     break
   fi
 
-  if [ $BACON_DELAY_BETWEEN_WARM != "0" ]; then
+  if [ "$BACON_DELAY_BETWEEN_WARM" != "0" ]; then
     echo "Attente de BACON_DELAY_BETWEEN_WARM=$BACON_DELAY_BETWEEN_WARM secondes"
     sleep $BACON_DELAY_BETWEEN_WARM
   fi
