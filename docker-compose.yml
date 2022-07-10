@@ -9,13 +9,16 @@ services:
 
   bacon-cache-warmer-demo:
     build: ./image/
-    image: bacon-cache-warmer:1.2.0
+    image: abesesr/bacon-cache-warmer:1.2.0
     container_name: bacon-cache-warmer-demo
     environment:
       BACON_RSS_URL: "https://bacon.abes.fr/rss"
-      #BACON_URL_SED_BEFORE_WARM: 's#http://bacon.abes.fr/package2kbart/\([A-Z0-9_-]\+\)#\1#g'
       BACON_URL_SED_BEFORE_WARM: 's#http://bacon.abes.fr/\(.*\)#https://bacon.abes.fr/\1#g'
+      #BACON_URL_SED_BEFORE_WARM: 's#http://bacon.abes.fr/package2kbart/\([A-Z0-9_-]\+\)#\1#g'
       BACON_DELAY_BETWEEN_WARM: "2"
       BACON_MAX_URL_TO_WARM: "3"
-      BACON_CACHEWARMER_JUST_ONCE: "yes"
+      BACON_CACHEWARMER_RUN_AT_STARTUP: "yes"
+      BACON_CACHEWARMER_JUST_ONCE: "no"
       BACON_CACHEWARMER_CRON: "0 3 * * *"
+      BACON_STORE_WARMED_TO_PATH: ""
+      #BACON_STORE_WARMED_TO_PATH: "/opt/kbart/"

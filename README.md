@@ -35,6 +35,7 @@ Les variables d'environnement suivantes permettent de paramétrer l'application 
 - ``BACON_CACHEWARMER_JUST_ONCE`` : permet de ne lancer le chauffeur de cache qu'une seule fois (par défaut "yes")
 - ``BACON_CACHEWARMER_CRON`` : permet de lancer périodiquement le chauffeur de cache (par défaut "0 3 * * *" soit tous les jours à 3h du matin)
 - ``BACON_URL_SED_BEFORE_WARM`` : la modification de l'URL avant de lancer le cURL qui permet de venir par exemple paramétrer le chauffeur de cache BACON sur les URL internes ou bien en local (très utile pour le développement)
+- ``BACON_CACHEWARMER_RUN_AT_STARTUP`` : pour lancer le chauffeur de cache au démarrage du conteneur ou pas (par défaut "yes", valeurs possibles : "yes" ou "no")
 
 ## Développements
 
