@@ -9,7 +9,7 @@ services:
 
   bacon-cache-warmer-demo:
     build: ./image/
-    image: abesesr/bacon-cache-warmer:1.2.0
+    image: abesesr/bacon-cache-warmer:1.3.0
     container_name: bacon-cache-warmer-demo
     environment:
       BACON_RSS_URL: "https://bacon.abes.fr/rss"
