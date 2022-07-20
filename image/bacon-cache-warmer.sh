@@ -16,7 +16,7 @@ echo "Chauffage de BACON: demarrage"
 
 # On se base sur le RSS de bacon pour obtenir toutes les URL a appeler
 echo "Telechargement du RSS de BACON (debut): $BACON_RSS_URL"
-curl -s -L $BACON_RSS_URL > /tmp/bacon.rss
+curl -s -L "$BACON_RSS_URL" > /tmp/bacon.rss
 echo "Telechargement du RSS de BACON (fin): taille du fichier $(du -h /tmp/bacon.rss | awk '{print $1}')"
 
 echo "SED a utiliser pour modifier les URLs du  RSS avant de chauffer : $BACON_URL_SED_BEFORE_WARM"
