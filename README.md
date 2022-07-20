@@ -1,7 +1,5 @@
 # bacon-cache-warmer-docker
 
-(Travail en cours - 09/03/2022)
-
 [![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/bacon-cache-warmer.svg)](https://hub.docker.com/r/abesesr/bacon-cache-warmer/)
 [![bacon-cache-warmer ci](https://github.com/abes-esr/bacon-cache-warmer-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/abes-esr/bacon-cache-warmer-docker/actions/workflows/ci.yml)
 
