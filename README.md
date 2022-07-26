@@ -21,7 +21,7 @@ docker run \
   abesesr/bacon-cache-warmer:1.3.1
 ```
 
-A l'Abes : pour installer et démarrer l'application à l'Abes, il faut se référer au dépot git suivant https://git.abes.fr/microwebservices-docker/ qui n'est actuellement pas ouvert en opensource car le code source des MicroWebService n'est pas ouvert (pour cela il aurait besoin d'être refondu).
+A l'Abes : pour installer et démarrer l'application à l'Abes, il faut se référer au dépot git suivant https://github.com/abes-esr/microwebservices-docker/
 
 ## Paramètres
 
